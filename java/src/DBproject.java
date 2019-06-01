@@ -718,10 +718,18 @@ public class DBproject{
 		}
 		while(true);
 
-		//query = "INSERT INTO Technician (id, fullname) VALUES ( " + technicianIdString + " , "+ fullName + " );";
+		query = "INSERT INTO Technician (id, fullname) VALUES ( " + technicianIdString + " , "+ fullName + " );";
 		
-		// esql.executeUpdate(query);
-		// System.out.println(query);
+		try
+		{
+			esql.executeUpdate(query);
+		}
+		catch(SQLException e)
+		{
+			System.out.println("Error: " + e.getMessage());
+		}
+
+		System.out.println(query);
 
 	}
 
