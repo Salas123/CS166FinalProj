@@ -307,7 +307,7 @@ public class DBproject{
 	planeAge = 0;
 	numSeats= -1;
      try
-    {	
+     {	
 	 	// generate random plane id
 		query = "SELECT MAX(id) FROM Plane;";
 		Statement stmt = esql._connection.createStatement();
@@ -503,6 +503,8 @@ public class DBproject{
 		numStops = -1;
 	    
 			// flightNum entry
+		try
+		{
 			do
 			{
 				System.out.println("Please enter the new flight number for the flight: ");
@@ -669,6 +671,7 @@ public class DBproject{
 		esql.executeUpdate(query);
 		System.out.print(query);
 	}
+
 	catch(SQLException e)
 	{
 	  System.out.print("ERROR: " + e.getMessage());
