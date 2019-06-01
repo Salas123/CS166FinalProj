@@ -330,6 +330,10 @@ public class DBproject{
 			try
 			{
 				planeAge  = Integer.parseInt(in.readLine());
+
+				if(planeAge < 0)
+					System.out.println("Entry must be greater than zero!");
+
 				break;
 			}
 			catch(Exception e)
@@ -338,7 +342,7 @@ public class DBproject{
 				continue;
 			}
 		}
-		while(true);
+		while(true && planeAge > 0);
 
 		planeAgeString = Integer.toString(planeAge);
 
@@ -350,6 +354,11 @@ public class DBproject{
 			try
 			{
 				numSeats  = Integer.parseInt(in.readLine());
+				if (numSeats >= 500) 
+					System.out.println("Entry must be greater than 500!");
+				else if(numSeats < 0)
+					System.out.println("Entry must be greater than zero!");
+
 				break;
 			}
 			catch(Exception e)
@@ -358,7 +367,7 @@ public class DBproject{
 				continue;
 			}
 		}
-		while(true);
+		while(true && numSeats < 500 && numSeats >= 0);
 
 		numSeatsString = Integer.toString(numSeats);
 
@@ -367,16 +376,8 @@ public class DBproject{
 		{
 			System.out.println("Please enter plane the make of the plane: ");
 
-			try
-			{
-				make  = in.readLine();
+				make = in.readLine();
 				break;
-			}
-			catch(Exception e)
-			{
-				System.out.println("Your input is invalid!");
-				continue;
-			}
 		}
 		while(true);
 		
@@ -385,16 +386,8 @@ public class DBproject{
 		{
 			System.out.println("Please enter plane the model of the plane: ");
 
-			try
-			{
 				model = in.readLine();
 				break;
-			}
-			catch(Exception e)
-			{
-				System.out.println("Your input is invalid!");
-				continue;
-			}
 		}
 		while(true);
 
@@ -439,16 +432,8 @@ public class DBproject{
 			{
 				System.out.println("Please enter the Pilot's full name: ");
 
-				try
-				{
-					fullName = in.readLine();
-					break;
-				}
-				catch(Exception e)
-				{
-					System.out.println("Your input is invalid!");
-					continue;
-				}
+				fullName = in.readLine();
+				break;
 			}
 			while(true);
 
@@ -457,21 +442,13 @@ public class DBproject{
 			{
 				System.out.println("Please enter the nationality of the Pilot: ");
 
-				try
-				{
-					nationality = in.readLine();
-					break;
-				}
-				catch(Exception e)
-				{
-					System.out.println("Your input is invalid!");
-					continue;
-				}
+				nationality = in.readLine();
+				break;
 			}
 			while(true);
 
 
-			query = "INSERT INTO Pilot (id, fullname, nationality) VALUES (" + pilotIdString + " , " + fullName +" , " + nationality + " );";
+			query = "INSERT INTO Pilot(id, fullname, nationality) VALUES (" + pilotIdString + " , " + fullName + " , " + nationality + " );";
 			esql.executeUpdate(query);
 			System.out.println(query);
 
@@ -488,164 +465,146 @@ public class DBproject{
 		int flightNum, cost, numSold, numStops;
 		String query, departure_date, arrival_date, arrival_airport, departure_airport, flightNumString, costString, numSoldString, numStopsString;
 
-		// flightNum entry
-		do
-		{
-			System.out.println("Please enter the new flight number for the flight: ");
-
-			try
+	    try
+	    {
+			// flightNum entry
+			do
 			{
-				flightNum = Integer.parseInt(in.readLine());
-				break;
+				System.out.println("Please enter the new flight number for the flight: ");
+
+				try
+				{
+					flightNum = Integer.parseInt(in.readLine());
+					if (flightNum < 0) 
+					System.out.print("Entry must be greater than zero!");
+
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Your input is invalid!");
+					continue;
+				}
 			}
-			catch(Exception e)
+			while(true && flightNum > 0);
+
+			flightNumString = Integer.toString(flightNum);
+
+			// cost entry
+			do
 			{
-				System.out.println("Your input is invalid!");
-				continue;
+				System.out.println("Please enter the cost of the flight: ");
+
+				try
+				{
+					cost = Integer.parseInt(in.readLine());
+					if(cost < 0)
+					System.out.print("Entry must be greater than zero!");
+
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Your input is invalid!");
+					continue;
+				}
 			}
-		}
-		while(true);
+			while(true && cost > 0);
 
-		flightNumString = Integer.toString(flightNum);
+			costString = Integer.toString(cost);
 
-		// cost entry
-		do
-		{
-			System.out.println("Please enter the cost of the flight: ");
-
-			try
+			// num tickets sold
+			do
 			{
-				cost = Integer.parseInt(in.readLine());
-				break;
+				System.out.println("Please enter the number of tickets sold for this flight: ");
+
+					numSold = Integer.parseInt(in.readLine());
+					if(numSold < 0)
+						System.out.print("Entry must be greater than zero!");
+
+					break;
 			}
-			catch(Exception e)
+			while(true && numSold > 0);
+
+			numSoldString = Integer.toString(numSold);
+
+			// num of stops
+			do
 			{
-				System.out.println("Your input is invalid!");
-				continue;
-			}
-		}
-		while(true);
+				System.out.println("Please enter the number of stops for this flight: ");
 
-		costString = Integer.toString(cost);
-
-		// num tickets sold
-		do
-		{
-			System.out.println("Please enter the number of tickets sold for this flight: ");
-
-			try
-			{
-				numSold = Integer.parseInt(in.readLine());
-				break;
-			}
-			catch(Exception e)
-			{
-				System.out.println("Your input is invalid!");
-				continue;
-			}
-		}
-		while(true);
-
-		numSoldString = Integer.toString(numSold);
-
-		// num of stops
-		do
-		{
-			System.out.println("Please enter the number of stops for this flight: ");
-
-			try
-			{
 				numStops = Integer.parseInt(in.readLine());
+				if (numStops < 0)
+					System.out.print("Entry must be greater than zero!");
+
 				break;
 			}
-			catch(Exception e)
+			while(true && numStops > 0);
+
+			numStopsString = Integer.toString(numStops);
+
+			//departure date
+			do
 			{
-				System.out.println("Your input is invalid!");
-				continue;
-			}
-		}
-		while(true);
+				System.out.println("Please enter the actual departure date (format yyyy-mm-dd): ");
 
-		numStopsString = Integer.toString(numStops);
-
-		//departure date
-		do
-		{
-			System.out.println("Please enter the actual departure date (format yyyy-mm-dd): ");
-
-			try
-			{
 				departure_date = in.readLine();
 				break;
-			}
-			catch(Exception e)
-			{
+			
 				System.out.println("Your input is invalid!");
-				continue;
 			}
-		}
-		while(true);
+			while(true);
 
-		// arrival date
-		do
-		{
-			System.out.println("Please enter the actual arrival date (format yyyy-mm-dd): ");
-
-			try
+			// arrival date
+			do
 			{
+				System.out.println("Please enter the actual arrival date (format yyyy-mm-dd): ");
+
 				arrival_date = in.readLine();
 				break;
 			}
-			catch(Exception e)
-			{
-				System.out.println("Your input is invalid!");
-				continue;
-			}
-		}
-		while(true);
+			while(true);
 
-		//arrival airport
-		do
-		{
-			System.out.println("Please enter the arrival airport: ");
-
-			try
+			//arrival airport
+			do
 			{
+				System.out.println("Please enter the arrival airport: ");
+
 				arrival_airport = in.readLine();
 				break;
 			}
-			catch(Exception e)
+			while(true);
+
+
+			// departure airport
+			do
 			{
-				System.out.println("Your input is invalid!");
-				continue;
+				System.out.println("Please enter the departure airport: ");
+
+				try
+				{
+					departure_airport = in.readLine();
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Your input is invalid!");
+					continue;
+				}
 			}
+			while(true);
+			
+			query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , " + departure_date + " , " + arrival_date + " , " + arrival_airport + " , " + departure_airport + " );";
+			System.out.println(query);
 		}
-		while(true);
 
-
-		// departure airport
-		do
+		catch(SQLException e)
 		{
-			System.out.println("Please enter the departure airport: ");
-
-			try
-			{
-				departure_airport = in.readLine();
-				break;
-			}
-			catch(Exception e)
-			{
-				System.out.println("Your input is invalid!");
-				continue;
-			}
+			System.out.print("ERROR: " + e.getMessage());
 		}
-		while(true);
 
-
-		//query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , " + departure_date + " , " + arrival_date + " , " + arrival_airport + " , " + departure_airport + " );";
 		
 		//esql.executeUpdate(query);
-		//System.out.println(query);
 
 		/*
 		 * Automacity: 
@@ -690,16 +649,7 @@ public class DBproject{
 			{
 				System.out.println("Please enter the full name of this new technician: ");
 
-				try
-				{
-					fullName = in.readLine();
-					break;
-				}
-				catch(Exception e)
-				{
-					System.out.println("Your input is invalid!");
-					continue;
-				}
+				fullName = in.readLine();
 			}
 			while(true);
 
