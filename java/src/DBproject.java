@@ -347,7 +347,7 @@ public class DBproject{
 		// user enters numSeats
 		do
 		{
-			System.out.println("Please enter plane a new Plane id: ");
+			System.out.println("Please enter num of seats: ");
 
 			try
 			{
