@@ -432,8 +432,16 @@ public class DBproject{
 			{
 				System.out.println("Please enter the Pilot's full name: ");
 
-				fullName = in.readLine();
-				break;
+				try
+				{
+					fullName = in.readLine();
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Error: " + e.getMessage());
+					continue;
+				}
 			}
 			while(true);
 
@@ -441,9 +449,16 @@ public class DBproject{
 			do
 			{
 				System.out.println("Please enter the nationality of the Pilot: ");
-
-				nationality = in.readLine();
-				break;
+				try
+				{
+					nationality = in.readLine();
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Error: " + e.getMessage());
+					continue;
+				}
 			}
 			while(true);
 
@@ -517,12 +532,19 @@ public class DBproject{
 			do
 			{
 				System.out.println("Please enter the number of tickets sold for this flight: ");
-
+				try
+				{
 					numSold = Integer.parseInt(in.readLine());
 					if(numSold < 0)
 						System.out.print("Entry must be greater than zero!");
 
 					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Error: " + e.getMessage());
+					continue;
+				}
 			}
 			while(true && numSold > 0);
 
@@ -532,12 +554,19 @@ public class DBproject{
 			do
 			{
 				System.out.println("Please enter the number of stops for this flight: ");
+				try
+				{
+					numStops = Integer.parseInt(in.readLine());
+					if (numStops < 0)
+						System.out.print("Entry must be greater than zero!");	
 
-				numStops = Integer.parseInt(in.readLine());
-				if (numStops < 0)
-					System.out.print("Entry must be greater than zero!");
-
-				break;
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Error: " + e.getMessage());
+					continue;
+				}
 			}
 			while(true && numStops > 0);
 
@@ -547,11 +576,16 @@ public class DBproject{
 			do
 			{
 				System.out.println("Please enter the actual departure date (format yyyy-mm-dd): ");
-
-				departure_date = in.readLine();
-				break;
-			
-				System.out.println("Your input is invalid!");
+				try
+				{
+					departure_date = in.readLine();	
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Error: " + e.getMessage());
+					continue;
+				}
 			}
 			while(true);
 
@@ -559,9 +593,16 @@ public class DBproject{
 			do
 			{
 				System.out.println("Please enter the actual arrival date (format yyyy-mm-dd): ");
-
-				arrival_date = in.readLine();
-				break;
+				try
+				{
+					arrival_date = in.readLine();
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Error: " + e.getMessage());
+					continue;
+				}
 			}
 			while(true);
 
@@ -569,9 +610,16 @@ public class DBproject{
 			do
 			{
 				System.out.println("Please enter the arrival airport: ");
-
-				arrival_airport = in.readLine();
-				break;
+				try
+				{
+					arrival_airport = in.readLine();
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Error: " + e.getMessage());
+					continue;
+				}
 			}
 			while(true);
 
@@ -593,7 +641,7 @@ public class DBproject{
 				}
 			}
 			while(true);
-			
+
 			query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , " + departure_date + " , " + arrival_date + " , " + arrival_airport + " , " + departure_airport + " );";
 			System.out.println(query);
 		}
@@ -648,8 +696,16 @@ public class DBproject{
 			do
 			{
 				System.out.println("Please enter the full name of this new technician: ");
-
-				fullName = in.readLine();
+				try
+				{
+					fullName = in.readLine();
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Error: " + e.getMessage());
+					continue;
+				}
 			}
 			while(true);
 
