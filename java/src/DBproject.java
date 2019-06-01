@@ -304,23 +304,19 @@ public class DBproject{
 	 	int planeID, planeAge, numSeats;
 	 	String query, make, model, planeIDString, planeAgeString, numSeatsString;
 		
-		// user enters new planeID
-		do
-		{
-			System.out.println("Please enter plane a new Plane id: ");
+	 	// generate random plane id
+		query = "SELECT MAX(id) FROM Plane"
+		Statement stmt = esql._connection.createStatement();
+    	//issues the query instruction
+    	ResultSet rs = stmt.executeQuery (query);
 
-			try
-			{
-				planeID  = Integer.parseInt(in.readLine());
-				break;
-			}
-			catch(Exception e)
-			{
-				System.out.println("Your input is invalid!");
-				continue;
-			}
-		}
-		while(true);
+    	if (rs.next()) 
+    	{
+    		planeID = Integer.parseInt(getNextRnum.getString(1)) + 1;
+    	}
+
+    	else 
+    		planeID = 0;
 
 		planeIDString = Integer.toString(planeID);
 
@@ -718,7 +714,7 @@ public class DBproject{
 		}
 		while(true);
 
-		query = "INSERT INTO Technician (id, fullname) VALUES ( " + technicianIdString + " , "+ fullName + " );";
+		query = "INSERT INTO Technician (id, full_name) VALUES ( " + technicianIdString + " , "+ fullName + " );";
 		
 		try
 		{
