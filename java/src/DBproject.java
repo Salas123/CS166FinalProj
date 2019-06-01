@@ -389,7 +389,7 @@ public class DBproject{
 
 			try
 			{
-				model  = in.readLine();
+				model = in.readLine();
 				break;
 			}
 			catch(Exception e)
@@ -403,7 +403,7 @@ public class DBproject{
 
 
 		query = "INSERT INTO Plane (id, make, model, age, seats) VALUES ( " + planeIDString + " , " + make + " , " + model + " , " + planeAgeString + " , " + numSeatsString + " );";
-		esql.executeQuery(query);
+		esql.executeUpdate(query);
 
 		//System.out.println(rowCount + "rows affected");
 
@@ -473,7 +473,7 @@ public class DBproject{
 
 
 		query = "INSERT INTO Pilot (id, fullname, nationality) VALUES (" + pilotIdString + " , " + fullName +" , " + nationality + " );";
-		esql.executeQuery(query);
+		esql.executeUpdate(query);
 		//System.out.println(rowCount + "rows affected");
 
 	}
@@ -639,7 +639,7 @@ public class DBproject{
 
 		query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , " + departure_date + " , " + arrival_date + " , " + arrival_airport + " , " + departure_airport + " );";
 		
-		esql.executeQuery(query);
+		esql.executeUpdate(query);
 		//System.out.println(rowCount + "rows affected");
 
 
@@ -690,7 +690,7 @@ public class DBproject{
 
 		query = "INSERT INTO Technician (id, fullname) VALUES ( " + technicianIdString + " , "+ fullName + " );";
 		
-		esql.executeQuery(query);
+		esql.executeUpdate(query);
 		//System.out.println(rowCount + "rows affected");
 
 	}
