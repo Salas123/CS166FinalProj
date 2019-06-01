@@ -61,13 +61,13 @@ public class DBproject{
 	 * */
 	public void executeUpdate (String sql) throws SQLException { 
 		// creates a statement object
-		Statement stmt = this._connection.createStatement ();
+		Statement stmt = this._connection.createStatement();
 
 		// issues the update instruction
-		stmt.executeUpdate (sql);
+		stmt.executeUpdate(sql);
 
 		// close the instruction
-	    stmt.close ();
+	    stmt.close();
 	}//end executeUpdate
 
 	/**
@@ -403,7 +403,7 @@ public class DBproject{
 
 
 		query = "INSERT INTO Plane (id, make, model, age, seats) VALUES ( " + planeIDString + " , " + make + " , " + model + " , " + planeAgeString + " , " + numSeatsString + " );";
-		executeQuery(query);
+		esql.executeQuery(query);
 
 		//System.out.println(rowCount + "rows affected");
 
@@ -473,7 +473,7 @@ public class DBproject{
 
 
 		query = "INSERT INTO Pilot (id, fullname, nationality) VALUES (" + pilotIdString + " , " + fullName +" , " + nationality + " );";
-		executeQuery(query);
+		esql.executeQuery(query);
 		//System.out.println(rowCount + "rows affected");
 
 	}
@@ -639,7 +639,7 @@ public class DBproject{
 
 		query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , " + departure_date + " , " + arrival_date + " , " + arrival_airport + " , " + departure_airport + " );";
 		
-		executeQuery(query);
+		esql.executeQuery(query);
 		//System.out.println(rowCount + "rows affected");
 
 
@@ -690,7 +690,7 @@ public class DBproject{
 
 		query = "INSERT INTO Technician (id, fullname) VALUES ( " + technicianIdString + " , "+ fullName + " );";
 		
-		executeQuery(query);
+		esql.executeQuery(query);
 		//System.out.println(rowCount + "rows affected");
 
 	}
