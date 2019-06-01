@@ -400,7 +400,7 @@ public class DBproject{
 		}
 		while(true);
 
-		query = " INSERT INTO Plane (id, make, model, age, seats) VALUES (" + planeIDString + "," + make + "," + model + "," + planeAgeString + "," + numSeatsString ");";
+		query = "INSERT INTO Plane (id, make, model, age, seats) VALUES (" + planeIDString + "," + make + "," + model + "," + planeAgeString + "," + numSeatsString + ");";
 
 		esql.executeUpdate(query);
 
@@ -469,7 +469,7 @@ public class DBproject{
 		while(true);
 
 
-		query = "INSERT INTO Pilot (id, fullname, nationality) VALUES ("+ pilotIdString +"," + fullName +"," + nationality + ");";
+		query = "INSERT INTO Pilot (id, fullname, nationality) VALUES (" + pilotIdString + "," + fullName +"," + nationality + ");";
 		esql.executeUpdate(query);
 
 	}
@@ -682,7 +682,7 @@ public class DBproject{
 		}
 		while(true);
 
-		query = "INSERT INTO Technician (id, fullname) VALUES (" + technicianIdString + ","+ fullName +");";
+		query = "INSERT INTO Technician (id, fullname) VALUES (" + technicianIdString + ","+ fullName + ");";
 		esql.executeUpdate(query);
 
 	}
