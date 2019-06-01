@@ -1,6 +1,5 @@
 INSERT INTO Plane (id, make, model, age_YEAR_1970, seats _SEATS) VALUES ('input1','input2','input3','input4','input5');
 
-
 INSERT INTO Pilot (id, fullname, nationality) VALUES ('input1','input2','input3');
 
 

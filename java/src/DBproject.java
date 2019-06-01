@@ -479,10 +479,22 @@ public class DBproject{
 		}
 		while(true);
 
+		query = "SELECT MAX(id) FROM Plane;";
+
 
 		query = "INSERT INTO Pilot (id, fullname, nationality) VALUES (" + pilotIdString + " , " + fullName +" , " + nationality + " );";
-		//esql.executeUpdate(query);
-		System.out.println(query);
+		
+
+		// try
+		// {
+		// 	esql.executeUpdate(query);
+		// }
+		// catch(SQLException e)
+		// {
+		// 	System.out.println("Error: " + e.getMessage());
+		// }
+
+		// System.out.println(query);
 
 	}
 
@@ -645,11 +657,21 @@ public class DBproject{
 		while(true);
 
 
-		query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , " + departure_date + " , " + arrival_date + " , " + arrival_airport + " , " + departure_airport + " );";
+		//query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , " + departure_date + " , " + arrival_date + " , " + arrival_airport + " , " + departure_airport + " );";
 		
 		//esql.executeUpdate(query);
-		System.out.println(query);
+		//System.out.println(query);
 
+		/*
+		 * Automacity: 
+		 *	Add flight && flight info, both must be success in order commit
+		 *	
+		 */
+
+		/*
+		 * Need to automatically generate numbers except flight num
+		 *
+		 */
 
 	}
 
@@ -696,10 +718,10 @@ public class DBproject{
 		}
 		while(true);
 
-		query = "INSERT INTO Technician (id, fullname) VALUES ( " + technicianIdString + " , "+ fullName + " );";
+		//query = "INSERT INTO Technician (id, fullname) VALUES ( " + technicianIdString + " , "+ fullName + " );";
 		
-		//esql.executeUpdate(query);
-		System.out.println(query);
+		// esql.executeUpdate(query);
+		// System.out.println(query);
 
 	}
 
