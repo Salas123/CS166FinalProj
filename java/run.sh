@@ -1,6 +1,6 @@
 #! /bin/bash
 DBNAME=jsala054_DB
-PORT=9015
+PORT=9016
 USER=jsala054
 
 # Example: source ./run.sh flightDB 5432 user
