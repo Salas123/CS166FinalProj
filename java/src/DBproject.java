@@ -642,7 +642,7 @@ public class DBproject{
 	public static void AddTechnician(DBproject esql) 
 	{
 		int technicianId;
-		String query, fullName technicianIdString;
+		String query, fullName, technicianIdString;
 
 		// technician entry
 		do
