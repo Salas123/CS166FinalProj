@@ -403,7 +403,15 @@ public class DBproject{
 
 
 		query = "INSERT INTO Plane (id, make, model, age, seats) VALUES ( " + planeIDString + " , " + make + " , " + model + " , " + planeAgeString + " , " + numSeatsString + " );";
-		//esql.executeUpdate(query);
+		
+		try
+		{
+			esql.executeUpdate(query);
+		}
+		catch(SQLException e)
+		{
+			System.out.println("Error: " + e.getMessage());
+		}
 
 		System.out.println(query);
 
