@@ -214,7 +214,7 @@ public class DBproject{
 	public static void main (String[] args) {
 		if (args.length != 3) {
 			System.err.println (
-				"Usage: " + "java [-classpath <classpath>] " + DBproject.class.getName () +
+				"Usage: " + "java [-classpath <classpath>] " + DBproject.class.getName() +
 		            " <dbname> <port> <user>");
 			return;
 		}//end if
