@@ -402,12 +402,12 @@ public class DBproject{
 
 		query = "INSERT INTO Plane (id, make, model, age, seats) VALUES ( " + planeIDString + " , " + make + " , " + model + " , " + planeAgeString + " , " + numSeatsString + " );";
 		
- System.out.print(query);  
- }
-		catch(SQLException e)
-		{
-			System.out.println("Error: " + e.getMessage());
-		}
+ 		System.out.print(query);  
+ 	}
+	catch(SQLException e)
+	{
+		System.out.println("Error: " + e.getMessage());
+	}
 
 
 	}
@@ -416,77 +416,70 @@ public class DBproject{
 	{//2
 		int pilotId;
 		String query, fullName, nationality, pilotIdString;
-
-		// enter pilot's id
-		do
+		try
 		{
-			System.out.println("Please enter the new ID for the new Pilot: ");
+			// Auto-generate pilot's id
+			query = "SELECT MAX(id) FROM Pilot;";
+			Statement stmt = esql._connection.createStatement();
+	    	//issues the query instruction
+	    	ResultSet rs = stmt.executeQuery(query);
 
-			try
+	    	if (rs.next()) 
+	    	{
+	    		pilotId = Integer.parseInt(rs.getString(1)) + 1;
+	    	}
+
+	    	else 
+	    		pilotId = 0;
+
+			pilotIdString = Integer.toString(pilotId);
+
+			// enter full name of pilot
+			do
 			{
-				pilotId = Integer.parseInt(in.readLine());
-				break;
+				System.out.println("Please enter the Pilot's full name: ");
+
+				try
+				{
+					fullName = in.readLine();
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Your input is invalid!");
+					continue;
+				}
 			}
-			catch(Exception e)
+			while(true);
+
+			//enter nationality of pilot 
+			do
 			{
-				System.out.println("Your input is invalid!");
-				continue;
+				System.out.println("Please enter the nationality of the Pilot: ");
+
+				try
+				{
+					nationality = in.readLine();
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Your input is invalid!");
+					continue;
+				}
 			}
+			while(true);
+
+
+			query = "INSERT INTO Pilot (id, fullname, nationality) VALUES (" + pilotIdString + " , " + fullName +" , " + nationality + " );";
+			esql.executeUpdate(query);
+			System.out.println(query);
+
 		}
-		while(true);
-
-		pilotIdString = Integer.toString(pilotId);
-
-		// enter full name of pilot
-		do
+		catch(SQLException e)
 		{
-			System.out.println("Please enter the Pilot's full name: ");
-
-			try
-			{
-				fullName = in.readLine();
-				break;
-			}
-			catch(Exception e)
-			{
-				System.out.println("Your input is invalid!");
-				continue;
-			}
+			System.out.println("Error: " + e.getMessage());
 		}
-		while(true);
-
-		//enter nationality of pilot 
-		do
-		{
-			System.out.println("Please enter the nationality of the Pilot: ");
-
-			try
-			{
-				nationality = in.readLine();
-				break;
-			}
-			catch(Exception e)
-			{
-				System.out.println("Your input is invalid!");
-				continue;
-			}
-		}
-		while(true);
-
-
-		query = "INSERT INTO Pilot (id, fullname, nationality) VALUES (" + pilotIdString + " , " + fullName +" , " + nationality + " );";
-		
-
-		// try
-		// {
-		// 	esql.executeUpdate(query);
-		// }
-		// catch(SQLException e)
-		// {
-		// 	System.out.println("Error: " + e.getMessage());
-		// }
-
-		// System.out.println(query);
 
 	}
 
@@ -673,55 +666,55 @@ public class DBproject{
 		String query, fullName, technicianIdString;
 
 		// technician entry
-		do
-		{
-			System.out.println("Please enter the ID for a new technician: ");
 
-			try
-			{
-				technicianId = Integer.parseInt(in.readLine());
-				break;
-			}
-			catch(Exception e)
-			{
-				System.out.println("Your input is invalid!");
-				continue;
-			}
-		}
-		while(true);
-
-		technicianIdString = Integer.toString(technicianId);
-
-		// full name entry
-		do
-		{
-			System.out.println("Please enter the full name of this new technician: ");
-
-			try
-			{
-				fullName = in.readLine();
-				break;
-			}
-			catch(Exception e)
-			{
-				System.out.println("Your input is invalid!");
-				continue;
-			}
-		}
-		while(true);
-
-		query = "INSERT INTO Technician (id, full_name) VALUES ( " + technicianIdString + " , "+ fullName + " );";
-		
 		try
 		{
+			// Auto-generate technician id
+		 	query = "SELECT MAX(id) FROM Technician;";
+			Statement stmt = esql._connection.createStatement();
+	    	//issues the query instruction
+	    	ResultSet rs = stmt.executeQuery(query);
+
+	    	if (rs.next()) 
+	    	{
+	    		technicianId = Integer.parseInt(rs.getString(1)) + 1;
+	    	}
+
+	    	else 
+	    		technicianId = 0;
+
+			technicianIdString = Integer.toString(technicianId);
+
+			// full name entry
+			do
+			{
+				System.out.println("Please enter the full name of this new technician: ");
+
+				try
+				{
+					fullName = in.readLine();
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Your input is invalid!");
+					continue;
+				}
+			}
+			while(true);
+
+
+			query = "INSERT INTO Technician (id, full_name) VALUES ( " + technicianIdString + " , "+ fullName + " );";
 			esql.executeUpdate(query);
-		}
+			System.out.println(query);
+
+	}
 		catch(SQLException e)
 		{
 			System.out.println("Error: " + e.getMessage());
 		}
 
-		System.out.println(query);
+		
 
 	}
 
