@@ -303,7 +303,10 @@ public class DBproject{
 	 {//1
 	 	int planeID, planeAge, numSeats;
 	 	String query, make, model, planeIDString, planeAgeString, numSeatsString;
-    try
+    
+	planeAge = 0;
+	numSeats= -1;
+     try
     {	
 	 	// generate random plane id
 		query = "SELECT MAX(id) FROM Plane;";
@@ -320,7 +323,7 @@ public class DBproject{
     		planeID = 0;
 
 		planeIDString = Integer.toString(planeID);
-    
+    	
    
 		// user enters planeAge
 		do
@@ -375,19 +378,33 @@ public class DBproject{
 		do
 		{
 			System.out.println("Please enter plane the make of the plane: ");
-
+			try
+			{
 				make = in.readLine();
-				break;
+				         break;
+                        }
+                        catch(Exception e)
+                        {
+                          System.out.println("Error: " + e.getMessage());
+                                continue;
+                        }
 		}
 		while(true);
 		
 		// user enters model of plane
 		do
 		{
+			
 			System.out.println("Please enter plane the model of the plane: ");
-
+			try{
 				model = in.readLine();
 				break;
+			}
+			catch(Exception e)
+			{
+			  System.out.println("Error: " + e.getMessage());
+				continue;
+			}
 		}
 		while(true);
 
@@ -479,9 +496,12 @@ public class DBproject{
 	{
 		int flightNum, cost, numSold, numStops;
 		String query, departure_date, arrival_date, arrival_airport, departure_airport, flightNumString, costString, numSoldString, numStopsString;
-
-	    try
-	    {
+		
+		flightNum = 0;
+		cost = 0;
+		numSold = -1;
+		numStops = -1;
+	    
 			// flightNum entry
 			do
 			{
@@ -644,16 +664,15 @@ public class DBproject{
 
 			query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , " + departure_date + " , " + arrival_date + " , " + arrival_airport + " , " + departure_airport + " );";
 			System.out.println(query);
-		}
-
-		catch(SQLException e)
-		{
-			System.out.print("ERROR: " + e.getMessage());
-		}
 
 		
-		//esql.executeUpdate(query);
-
+		esql.executeUpdate(query);
+		System.out.print(query);
+	}
+	catch(SQLException e)
+	{
+	  System.out.print("ERROR: " + e.getMessage());
+	}
 		/*
 		 * Automacity: 
 		 *	Add flight && flight info, both must be success in order commit
