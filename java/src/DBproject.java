@@ -357,11 +357,17 @@ public class DBproject{
 			try
 			{
 				numSeats  = Integer.parseInt(in.readLine());
-				if (numSeats >= 500) 
+				if (numSeats >= 500)
+				{	 
 					System.out.println("Entry must be greater than 500!");
+					continue;
+				}
 				else if(numSeats < 0)
+				{
 					System.out.println("Entry must be greater than zero!");
-
+					continue;
+				}
+				else
 				break;
 			}
 			catch(Exception e)
