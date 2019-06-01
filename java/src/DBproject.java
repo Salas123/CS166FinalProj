@@ -303,23 +303,25 @@ public class DBproject{
 	 {//1
 	 	int planeID, planeAge, numSeats;
 	 	String query, make, model, planeIDString, planeAgeString, numSeatsString;
-		
+    try
+    {	
 	 	// generate random plane id
-		query = "SELECT MAX(id) FROM Plane"
+		query = "SELECT MAX(id) FROM Plane;";
 		Statement stmt = esql._connection.createStatement();
     	//issues the query instruction
     	ResultSet rs = stmt.executeQuery (query);
 
     	if (rs.next()) 
     	{
-    		planeID = Integer.parseInt(getNextRnum.getString(1)) + 1;
+    		planeID = Integer.parseInt(rs.getString(1)) + 1;
     	}
 
     	else 
     		planeID = 0;
 
 		planeIDString = Integer.toString(planeID);
-
+    
+   
 		// user enters planeAge
 		do
 		{
@@ -400,16 +402,12 @@ public class DBproject{
 
 		query = "INSERT INTO Plane (id, make, model, age, seats) VALUES ( " + planeIDString + " , " + make + " , " + model + " , " + planeAgeString + " , " + numSeatsString + " );";
 		
-		try
-		{
-			esql.executeUpdate(query);
-		}
+ System.out.print(query);  
+ }
 		catch(SQLException e)
 		{
 			System.out.println("Error: " + e.getMessage());
 		}
-
-		System.out.println(query);
 
 
 	}
@@ -474,8 +472,6 @@ public class DBproject{
 			}
 		}
 		while(true);
-
-		query = "SELECT MAX(id) FROM Plane;";
 
 
 		query = "INSERT INTO Pilot (id, fullname, nationality) VALUES (" + pilotIdString + " , " + fullName +" , " + nationality + " );";
