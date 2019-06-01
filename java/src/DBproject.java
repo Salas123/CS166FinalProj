@@ -400,9 +400,12 @@ public class DBproject{
 		}
 		while(true);
 
-		query = "INSERT INTO Plane (id, make, model, age, seats) VALUES (" + planeIDString + "," + make + "," + model + "," + planeAgeString + "," + numSeatsString + ");";
 
-		esql.executeUpdate(query);
+
+		query = "INSERT INTO Plane (id, make, model, age, seats) VALUES ( " + planeIDString + " , " + make + " , " + model + " , " + planeAgeString + " , " + numSeatsString + " );";
+		executeQuery(query);
+
+		//System.out.println(rowCount + "rows affected");
 
 
 	}
@@ -469,8 +472,9 @@ public class DBproject{
 		while(true);
 
 
-		query = "INSERT INTO Pilot (id, fullname, nationality) VALUES (" + pilotIdString + "," + fullName +"," + nationality + ");";
-		esql.executeUpdate(query);
+		query = "INSERT INTO Pilot (id, fullname, nationality) VALUES (" + pilotIdString + " , " + fullName +" , " + nationality + " );";
+		executeQuery(query);
+		//System.out.println(rowCount + "rows affected");
 
 	}
 
@@ -633,8 +637,10 @@ public class DBproject{
 		while(true);
 
 
-		query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + "," + costString + "," + numSoldString + "," + numStopsString + "," + departure_date + "," + arrival_date + "," + arrival_airport + "," + departure_airport + ");";
-		esql.executeUpdate(query);
+		query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , " + departure_date + " , " + arrival_date + " , " + arrival_airport + " , " + departure_airport + " );";
+		
+		executeQuery(query);
+		//System.out.println(rowCount + "rows affected");
 
 
 	}
@@ -682,8 +688,10 @@ public class DBproject{
 		}
 		while(true);
 
-		query = "INSERT INTO Technician (id, fullname) VALUES (" + technicianIdString + ","+ fullName + ");";
-		esql.executeUpdate(query);
+		query = "INSERT INTO Technician (id, fullname) VALUES ( " + technicianIdString + " , "+ fullName + " );";
+		
+		executeQuery(query);
+		//System.out.println(rowCount + "rows affected");
 
 	}
 
