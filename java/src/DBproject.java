@@ -810,6 +810,10 @@ public class DBproject{
 				}
 
 			}
+			catch(SQLException e)
+			{
+				System.out.print("Error: " + e.getMessage());
+			}
 
 	}
 
