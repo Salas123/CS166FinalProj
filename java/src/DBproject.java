@@ -299,40 +299,40 @@ public class DBproject{
 		return input;
 	}//end readChoice
 
-	public static boolean hasAtomocity(Statement stmt, String flightQueryUpdate, String infoQueryUpdate)
-	{
-		int errorCounter = 0;
+//	public static boolean hasAtomocity(Statement stmt, String flightQueryUpdate, String infoQueryUpdate)
+//	{
+//		int errorCounter = 0;
 
-		try
-		{
-			esqlParam.executeUpdate(flightQueryUpdate);
-		}
-		catch(SQLException e)
-		{
-			System.out.print("ERROR: " + e.getMessage());
-			errorCounter++;
-		}
+	//	try
+	//	{
+		//	esqlParam.executeUpdate(flightQueryUpdate);
+	//	}
+	//	catch(SQLException e)
+	//	{
+	//		System.out.print("ERROR: " + e.getMessage());
+	//		errorCounter++;
+	//	}
 
-		try 
-		{
+	//	try 
+	//	{
 
-			esqlParam.executeUpdate(infoQueryUpdate);
-		}
-		catch(SQLException e)
-		{
-			System.out.print("ERROR: " + e.getMessage());
-			errorCounter++;
-		}
-
-
-		if(errorCounter > 0)
-			return false;
-		else
-			return true;
+		//	esqlParam.executeUpdate(infoQueryUpdate);
+	//	}
+	//	catch(SQLException e)
+	//	{
+	//		System.out.print("ERROR: " + e.getMessage());
+	//		errorCounter++;
+	//	}
 
 
+//		if(errorCounter > 0)
+//			return false;
+//		else
+//			return true;
 
-	}
+
+
+//	}
 
 	public static void AddPlane(DBproject esql)
 	 {//1
@@ -523,7 +523,7 @@ public class DBproject{
 			while(true);
 
 
-			query = "INSERT INTO Pilot(id, fullname, nationality) VALUES (" + pilotIdString + " , '" + fullName + "'' , '" + nationality + "' );";
+			query = "INSERT INTO Pilot(id, fullname, nationality) VALUES (" + pilotIdString + " , '" + fullName + "' , '" + nationality + "' );";
 			esql.executeUpdate(query);
 			System.out.println(query);
 
@@ -708,7 +708,10 @@ public class DBproject{
 			while(true);
 
 			query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , " + departure_date + " , " + arrival_date + " , '" + arrival_airport + "' , '" + departure_airport + "' );";
-			System.out.println(query);
+
+esql.executeUpdate(query);
+			
+System.out.println(query);
 
 		
 		//Statement stmt = esql._connection.createStatement();
