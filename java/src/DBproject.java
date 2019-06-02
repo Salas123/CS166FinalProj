@@ -775,9 +775,9 @@ public class DBproject{
 	    		//issues the query instruction
 	    		ResultSet rs2 = stmt2.executeQuery (query2);
 
-	    		if (rs.next()) 
+	    		if (rs2.next()) 
 	    		{
-	    			fiid = Integer.parseInt(rs.getString(1)) + 1;
+	    			fiid = Integer.parseInt(rs2.getString(1)) + 1;
 	    		}
 
 	    		else 
