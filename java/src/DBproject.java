@@ -600,7 +600,7 @@ public class DBproject{
 		try
 		{
 			// generate random flight num
-			query = "SELECT MAX(flightNum) FROM Flight;";
+			query = "SELECT MAX(fnum) FROM Flight;";
 			Statement stmt1 = esql._connection.createStatement();
 	    	//issues the query instruction
 	    	ResultSet rs = stmt1.executeQuery (query);
