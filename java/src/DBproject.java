@@ -371,7 +371,7 @@ public class DBproject{
       try {
         dt = in.readLine();
         // check if the input date is correct
-        new SimpleDateFormat("yyyy-mm-dd").parse(dt);
+        new SimpleDateFormat("yyyy/MM/dd").parse(dt);
 
         break;
       }
@@ -759,7 +759,7 @@ public class DBproject{
 			}
 			while(true);
 
-			query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , " + departure_date + " , " + arrival_date + " , '" + arrival_airport + "' , '" + departure_airport + "' );";
+			query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , '" + departure_date + "' , '" + arrival_date + "' , '" + arrival_airport + "' , '" + departure_airport + "' );";
 			esql.executeUpdate(query);
 			// *** Beginning of Flight info entries ***
 
