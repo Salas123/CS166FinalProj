@@ -458,7 +458,7 @@ public class DBproject{
 				{
 					System.out.print("Please enter the Pilot's first name: ");
 					fullName = in.readLine();
-					System.out,print("Please enter the Pilot's last name: ");
+					System.out.print("Please enter the Pilot's last name: ");
 					fullName += " ";
 					fullName += in.readLine();
 
@@ -744,7 +744,7 @@ public class DBproject{
 
 
 			query = "INSERT INTO Technician (id, full_name) VALUES ( " + technicianIdString + " , "+ fullName + " );";
-			esql.executeUpdate(query);
+			stmt.executeUpdate(query);
 			System.out.println(query);
 
 	}
