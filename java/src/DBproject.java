@@ -344,7 +344,7 @@ public class DBproject{
 	throws SQLException
 	{
 		int rowCount =0;
-		String query = "SELECT " + idType + " FROM " + table + "T1 WHERE T1." + idType + " = " +  idnum +";";
+		String query = "SELECT " + idType + " FROM " + table + " T1 WHERE T1." + idType + " = " +  idnum +";";
 
 		try
 		{
@@ -803,8 +803,11 @@ public class DBproject{
 				while(true);
 
 				Statement stmt3 = esql._connection.createStatement();
+				String fnumVal = "fnum";
+				String flightVal = "Flight";
 
-				if (hasID(stmt3, "Flight" , "fnum", fi_fnum))
+
+				if (hasID(stmt3, flightVal , fnumVal, fi_fnum))
 				{
 						System.out.print("So far so good!");
 				}
