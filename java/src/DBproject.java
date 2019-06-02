@@ -764,7 +764,7 @@ public class DBproject{
 			query2 = "SELECT MAX(fiid) FROM FlightInfo;";
 			Statement stmt2 = esql._connection.createStatement();
     		//issues the query instruction
-    		ResultSet rs = stmt2.executeQuery (query2);
+    		ResultSet rs2 = stmt2.executeQuery (query2);
 
     		if (rs.next()) 
     		{
