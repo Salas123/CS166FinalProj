@@ -811,7 +811,7 @@ public class DBproject{
 
 				if (hasID(stmt3, flightVal , fnumVal, fi_fnum))
 				{
-						System.out.print("So far so good!");
+						System.out.print("This flight exists!");
 				}
 
 			}
