@@ -601,9 +601,9 @@ public class DBproject{
 		{
 			// generate random flight num
 			query = "SELECT MAX(flightNum) FROM Flight;";
-			Statement stmt = esql._connection.createStatement();
+			Statement stmt1 = esql._connection.createStatement();
 	    	//issues the query instruction
-	    	ResultSet rs = stmt.executeQuery (query);
+	    	ResultSet rs = stmt1.executeQuery (query);
 
 	    	if (rs.next()) 
 	    	{
@@ -762,9 +762,9 @@ public class DBproject{
 
 			// generate random flight info id
 			query2 = "SELECT MAX(fiid) FROM FlightInfo;";
-			Statement stmt = esql._connection.createStatement();
+			Statement stmt2 = esql._connection.createStatement();
     		//issues the query instruction
-    		ResultSet rs = stmt.executeQuery (query2);
+    		ResultSet rs = stmt2.executeQuery (query2);
 
     		if (rs.next()) 
     		{
@@ -793,9 +793,9 @@ public class DBproject{
 			}
 			while(true);
 
-			Statement stmt2 = esql._connection.createStatement();
+			Statement stmt3 = esql._connection.createStatement();
 
-			if (hasID(stmt2, "fnum", fi_fnum, "Flight"))
+			if (hasID(stmt3, "fnum", fi_fnum, "Flight"))
 			{
 					System.out.print("So far so good!");
 			}
