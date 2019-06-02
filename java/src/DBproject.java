@@ -735,7 +735,7 @@ public class DBproject{
 			esql.executeUpdate(query);
 			// *** Beginning of Flight info entries ***
 
-			int fiid
+			int fiid;
 			String query2, fiidString, fi_fnum;
 
 			// generate random flight info id
