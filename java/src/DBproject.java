@@ -299,40 +299,64 @@ public class DBproject{
 		return input;
 	}//end readChoice
 
-//	public static boolean hasAtomocity(Statement stmt, String flightQueryUpdate, String infoQueryUpdate)
-//	{
-//		int errorCounter = 0;
+	public static boolean hasAtomocity(Statement stmt, String flightQueryUpdate, String infoQueryUpdate)
+	throws SQLException
+	{
+		int errorCounter = 0;
 
-	//	try
-	//	{
-		//	esqlParam.executeUpdate(flightQueryUpdate);
-	//	}
-	//	catch(SQLException e)
-	//	{
-	//		System.out.print("ERROR: " + e.getMessage());
-	//		errorCounter++;
-	//	}
+		try
+		{
+			stmt.executeUpdate(flightQueryUpdate);
+		}
+		catch(SQLException e)
+		{
+			System.out.print("ERROR: " + e.getMessage());
+			errorCounter++;
+		}
 
-	//	try 
-	//	{
+		if (errorCounter == 0) 
+		{
+			try 
+			{
 
-		//	esqlParam.executeUpdate(infoQueryUpdate);
-	//	}
-	//	catch(SQLException e)
-	//	{
-	//		System.out.print("ERROR: " + e.getMessage());
-	//		errorCounter++;
-	//	}
-
-
-//		if(errorCounter > 0)
-//			return false;
-//		else
-//			return true;
+				stmt.executeUpdate(infoQueryUpdate);
+			}
+			catch(SQLException e)
+			{
+				System.out.print("ERROR: " + e.getMessage());
+				errorCounter++;
+			}
+		}
 
 
+		if(errorCounter > 0)
+			return false;
+		else
+			return true;
 
-//	}
+	}
+
+	public static boolean hasID(Statement stmt, String idType, String idnum, String table)
+	throws SQLException
+	{
+		int rowCount =0;
+		String query = "SELECT " + idType + " FROM " + table + "T1 WHERE T1." + idType + " = idnum;";
+
+		try
+		{
+			rowCount = stmt.executeQuery(query);
+		}
+		catch(SQLException e)
+		{
+			System.out.print("ERROR: " + e.getMessage());
+		}
+
+		if (rowCount > 0)
+			return true;
+		else
+			return false;
+
+	}
 
 	public static void AddPlane(DBproject esql)
 	 {//1
@@ -566,7 +590,7 @@ public class DBproject{
 					continue;
 				}
 			}
-			while(true && flightNum > 0);
+			while(flightNum == 0);
 
 			flightNumString = Integer.toString(flightNum);
 
@@ -589,7 +613,7 @@ public class DBproject{
 					continue;
 				}
 			}
-			while(true && cost > 0);
+			while(cost == 0);
 
 			costString = Integer.toString(cost);
 
@@ -611,7 +635,7 @@ public class DBproject{
 					continue;
 				}
 			}
-			while(true && numSold > 0);
+			while(numSold == -1);
 
 			numSoldString = Integer.toString(numSold);
 
@@ -633,7 +657,7 @@ public class DBproject{
 					continue;
 				}
 			}
-			while(true && numStops > 0);
+			while(numStops == -1);
 
 			numStopsString = Integer.toString(numStops);
 
@@ -708,30 +732,58 @@ public class DBproject{
 			while(true);
 
 			query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , " + departure_date + " , " + arrival_date + " , '" + arrival_airport + "' , '" + departure_airport + "' );";
+			esql.executeUpdate(query);
+			// *** Beginning of Flight info entries ***
 
-esql.executeUpdate(query);
-			
-System.out.println(query);
+			int fiid
+			String query2, fiidString, fi_fnum;
 
-		
-		//Statement stmt = esql._connection.createStatement();
+			// generate random flight info id
+			query2 = "SELECT MAX(fiid) FROM FlightInfo;";
+			Statement stmt = esql._connection.createStatement();
+    		//issues the query instruction
+    		ResultSet rs = stmt.executeQuery (query2);
+
+    		if (rs.next()) 
+    		{
+    			fiid = Integer.parseInt(rs.getString(1)) + 1;
+    		}
+
+    		else 
+    			fiid = 0;
+
+			fiidString = Integer.toString(fiid);
+
+			do
+			{
+				System.out.println("Please enter the flight number for flight info: ");
+
+				try
+				{
+					fi_fnum = in.readLine();
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Your input is invalid!");
+					continue;
+				}
+			}
+			while(true);
+
+			Statement stmt2 = esql._connection.createStatement();
+
+			if (hasID(stmt2, "fnum", fi_fnum, "Flight"))
+			{
+					System.out.print("So far so good!");
+			}
+
 
 	}
-
 	catch(SQLException e)
 	{
 	  System.out.print("ERROR: " + e.getMessage());
 	}
-		/*
-		 * Automacity: 
-		 *	Add flight && flight info, both must be success in order commit
-		 *	
-		 */
-
-		/*
-		 * Need to automatically generate numbers except flight num
-		 *
-		 */
 
 	}
 
