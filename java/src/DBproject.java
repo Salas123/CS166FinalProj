@@ -599,25 +599,19 @@ public class DBproject{
 			// flightNum entry
 		try
 		{
-			do
-			{
-				System.out.println("Please enter the new flight number for the flight: ");
+			// generate random flight num
+			query = "SELECT MAX(flightNum) FROM Flight;";
+			Statement stmt = esql._connection.createStatement();
+	    	//issues the query instruction
+	    	ResultSet rs = stmt.executeQuery (query);
 
-				try
-				{
-					flightNum = Integer.parseInt(in.readLine());
-					if (flightNum < 0) 
-					System.out.print("Entry must be greater than zero!");
+	    	if (rs.next()) 
+	    	{
+	    		flightNum = Integer.parseInt(rs.getString(1)) + 1;
+	    	}
 
-					break;
-				}
-				catch(Exception e)
-				{
-					System.out.println("Your input is invalid!");
-					continue;
-				}
-			}
-			while(flightNum == 0);
+	    	else 
+	    		flightNum = 0;
 
 			flightNumString = Integer.toString(flightNum);
 
