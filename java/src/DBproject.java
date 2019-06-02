@@ -361,126 +361,146 @@ public class DBproject{
 
 	}
 
+	private static String setDate(){
+    String dt;
+    while(true){
+      try {
+        dt = in.readLine();
+        // check if the input date is correct
+        new SimpleDateFormat("yyyy-mm-dd").parse(dt);
+
+        break;
+      }
+      catch(Exception e)
+      {
+        System.out.println("Invalid date input! Try again.");
+        continue;
+      }
+    }
+
+    return dt;
+  }
+
 	public static void AddPlane(DBproject esql)
 	 {//1
 	 	int planeID, planeAge, numSeats;
 	 	String query, make, model, planeIDString, planeAgeString, numSeatsString;
     
-	planeAge = 0;
-	numSeats= -1;
-     try
-     {	
-	 	// generate random plane id
-		query = "SELECT MAX(id) FROM Plane;";
-		Statement stmt = esql._connection.createStatement();
-    	//issues the query instruction
-    	ResultSet rs = stmt.executeQuery (query);
+		planeAge = 0;
+		numSeats= -1;
+	     try
+	     {	
+		 	// generate random plane id
+			query = "SELECT MAX(id) FROM Plane;";
+			Statement stmt = esql._connection.createStatement();
+	    	//issues the query instruction
+	    	ResultSet rs = stmt.executeQuery (query);
 
-    	if (rs.next()) 
-    	{
-    		planeID = Integer.parseInt(rs.getString(1)) + 1;
-    	}
+	    	if (rs.next()) 
+	    	{
+	    		planeID = Integer.parseInt(rs.getString(1)) + 1;
+	    	}
 
-    	else 
-    		planeID = 0;
+	    	else 
+	    		planeID = 0;
 
-		planeIDString = Integer.toString(planeID);
-    	
-   
-		// user enters planeAge
-		do
-		{
-			System.out.println("Please enter age of plane: ");
-
-			try
+			planeIDString = Integer.toString(planeID);
+	    	
+	   
+			// user enters planeAge
+			do
 			{
-				planeAge  = Integer.parseInt(in.readLine());
+				System.out.println("Please enter age of plane: ");
 
-				if(planeAge < 0)
-					System.out.println("Entry must be greater than zero!");
-
-				break;
-			}
-			catch(Exception e)
-			{
-				System.out.println("Your input is invalid!");
-				continue;
-			}
-		}
-		while(true && planeAge > 0);
-
-		planeAgeString = Integer.toString(planeAge);
-
-		// user enters numSeats
-		do
-		{
-			System.out.println("Please enter num of seats: ");
-
-			try
-			{
-				numSeats  = Integer.parseInt(in.readLine());
-				if (numSeats >= 500)
-				{	 
-					System.out.println("Entry must be greater than 500!");
-					continue;
-				}
-				else if(numSeats < 0)
+				try
 				{
-					System.out.println("Entry must be greater than zero!");
+					planeAge  = Integer.parseInt(in.readLine());
+
+					if(planeAge < 0)
+						System.out.println("Entry must be greater than zero!");
+
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Your input is invalid!");
 					continue;
 				}
-				else
-				break;
 			}
-			catch(Exception e)
+			while(true && planeAge > 0);
+
+			planeAgeString = Integer.toString(planeAge);
+
+			// user enters numSeats
+			do
 			{
-				System.out.println("Your input is invalid!");
-				continue;
+				System.out.println("Please enter num of seats: ");
+
+				try
+				{
+					numSeats  = Integer.parseInt(in.readLine());
+					if (numSeats >= 500)
+					{	 
+						System.out.println("Entry must be greater than 500!");
+						continue;
+					}
+					else if(numSeats < 0)
+					{
+						System.out.println("Entry must be greater than zero!");
+						continue;
+					}
+					else
+					break;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Your input is invalid!");
+					continue;
+				}
 			}
-		}
-		while(true && numSeats < 500 && numSeats > 0);
+			while(true && numSeats < 500 && numSeats > 0);
 
-		numSeatsString = Integer.toString(numSeats);
+			numSeatsString = Integer.toString(numSeats);
 
-		// user enters make of plane
-		do
-		{
-			System.out.println("Please enter plane the make of the plane: ");
-			try
+			// user enters make of plane
+			do
 			{
-				make = in.readLine();
-				         break;
-                        }
-                        catch(Exception e)
-                        {
-                          System.out.println("Error: " + e.getMessage());
-                                continue;
-                        }
-		}
-		while(true);
-		
-		// user enters model of plane
-		do
-		{
+				System.out.println("Please enter plane the make of the plane: ");
+				try
+				{
+					make = in.readLine();
+					         break;
+	                        }
+	                        catch(Exception e)
+	                        {
+	                          System.out.println("Error: " + e.getMessage());
+	                                continue;
+	                        }
+			}
+			while(true);
 			
-			System.out.println("Please enter plane the model of the plane: ");
-			try{
-				model = in.readLine();
-				break;
-			}
-			catch(Exception e)
+			// user enters model of plane
+			do
 			{
-			  System.out.println("Error: " + e.getMessage());
-				continue;
+				
+				System.out.println("Please enter plane the model of the plane: ");
+				try{
+					model = in.readLine();
+					break;
+				}
+				catch(Exception e)
+				{
+				  System.out.println("Error: " + e.getMessage());
+					continue;
+				}
 			}
-		}
-		while(true);
+			while(true);
 
 
 
-		query = "INSERT INTO Plane (id, make, model, age, seats) VALUES ( " + planeIDString + " , '" + make + "' , '" + model + "' , " + planeAgeString + " , " + numSeatsString + " );";
-		
- 		System.out.print(query);  
+			query = "INSERT INTO Plane (id, make, model, age, seats) VALUES ( " + planeIDString + " , '" + make + "' , '" + model + "' , " + planeAgeString + " , " + numSeatsString + " );";
+			
+	 		System.out.print(query);  
  	}
 	catch(SQLException e)
 	{
@@ -670,7 +690,8 @@ public class DBproject{
 				System.out.println("Please enter the actual departure date (format yyyy-mm-dd): ");
 				try
 				{
-					departure_date = in.readLine();	
+					departure_date = setDate();
+
 					break;
 				}
 				catch(Exception e)
@@ -687,7 +708,7 @@ public class DBproject{
 				System.out.println("Please enter the actual arrival date (format yyyy-mm-dd): ");
 				try
 				{
-					arrival_date = in.readLine();
+					arrival_date = setDate();
 					break;
 				}
 				catch(Exception e)
