@@ -340,11 +340,11 @@ public class DBproject{
 
 	}
 
-	public static boolean hasID(Statement stmt, String idType, String table, String idnum)
+	public static boolean hasID(Statement stmt, String table, String idType, String idnum)
 	throws SQLException
 	{
 		int rowCount =0;
-		String query = "SELECT " + idType + " FROM " + table + " T1 WHERE T1." + idType + " = " +  idnum +";";
+		String query = "SELECT " + idType + " FROM " + table + " WHERE " + idType + " = '" +  idnum +"';";
 
 		try
 		{
@@ -762,6 +762,8 @@ public class DBproject{
 			{
 	  			System.out.print("ERROR: " + e.getMessage());
 			}
+
+
 			// *** Beginning of Flight info entries ***
 
 			int fiid;
