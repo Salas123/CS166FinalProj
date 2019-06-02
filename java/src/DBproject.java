@@ -334,8 +334,6 @@ public class DBproject{
 
 	}
 
-	public static boolean hasID
-
 	public static void AddPlane(DBproject esql)
 	 {//1
 	 	int planeID, planeAge, numSeats;
