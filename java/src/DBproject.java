@@ -340,11 +340,11 @@ public class DBproject{
 
 	}
 
-	public static boolean hasID(Statement stmt, String idType, String idnum, String table)
+	public static boolean hasID(Statement stmt, String idType, String table, String idnum)
 	throws SQLException
 	{
 		int rowCount =0;
-		String query = "SELECT " + idType + " FROM " + table + "T1 WHERE T1." + idType + " = idnum;";
+		String query = "SELECT " + idType + " FROM " + table + "T1 WHERE T1." + idType + " = " +  idnum +";";
 
 		try
 		{
@@ -755,57 +755,61 @@ public class DBproject{
 
 			query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , '" + departure_date + "' , '" + arrival_date + "' , '" + arrival_airport + "' , '" + departure_airport + "' );";
 			esql.executeUpdate(query);
+
+			}
+
+			catch(SQLException e)
+			{
+	  			System.out.print("ERROR: " + e.getMessage());
+			}
 			// *** Beginning of Flight info entries ***
 
 			int fiid;
 			String query2, fiidString, fi_fnum;
-
-			// generate random flight info id
-			query2 = "SELECT MAX(fiid) FROM FlightInfo;";
-			Statement stmt2 = esql._connection.createStatement();
-    		//issues the query instruction
-    		ResultSet rs2 = stmt2.executeQuery (query2);
-
-    		if (rs.next()) 
-    		{
-    			fiid = Integer.parseInt(rs.getString(1)) + 1;
-    		}
-
-    		else 
-    			fiid = 0;
-
-			fiidString = Integer.toString(fiid);
-
-			do
+			try
 			{
-				System.out.println("Please enter the flight number for flight info: ");
+				// generate random flight info id
+				query2 = "SELECT MAX(fiid) FROM FlightInfo;";
 
-				try
+				Statement stmt2 = esql._connection.createStatement();
+	    		//issues the query instruction
+	    		ResultSet rs2 = stmt2.executeQuery (query2);
+
+	    		if (rs.next()) 
+	    		{
+	    			fiid = Integer.parseInt(rs.getString(1)) + 1;
+	    		}
+
+	    		else 
+	    			fiid = 0;
+
+				fiidString = Integer.toString(fiid);
+
+				do
 				{
-					fi_fnum = in.readLine();
-					break;
+					System.out.println("Please enter the flight number for flight info: ");
+
+					try
+					{
+						fi_fnum = in.readLine();
+						break;
+					}
+					catch(Exception e)
+					{
+						System.out.println("Your input is invalid!");
+						continue;
+					}
 				}
-				catch(Exception e)
+				while(true);
+
+				Statement stmt3 = esql._connection.createStatement();
+
+				if (hasID(stmt3, "Flight" , "fnum", fi_fnum))
 				{
-					System.out.println("Your input is invalid!");
-					continue;
+						System.out.print("So far so good!");
 				}
+
 			}
-			while(true);
-
-			Statement stmt3 = esql._connection.createStatement();
-
-			if (hasID(stmt3, "fnum", fi_fnum, "Flight"))
-			{
-					System.out.print("So far so good!");
-			}
-
-
-	}
-	catch(SQLException e)
-	{
-	  System.out.print("ERROR: " + e.getMessage());
-	}
 
 	}
 
