@@ -376,7 +376,7 @@ public class DBproject{
 				continue;
 			}
 		}
-		while(true && numSeats < 500 && numSeats >= 0);
+		while(true && numSeats < 500 && numSeats > 0);
 
 		numSeatsString = Integer.toString(numSeats);
 
@@ -453,11 +453,16 @@ public class DBproject{
 			// enter full name of pilot
 			do
 			{
-				System.out.println("Please enter the Pilot's full name: ");
 
 				try
 				{
+					System.out.print("Please enter the Pilot's first name: ");
 					fullName = in.readLine();
+					System.out,print("Please enter the Pilot's last name: ");
+					fullName += " ";
+					fullName += in.readLine();
+
+					System.out.print("Name entered: " + fullName);
 					break;
 				}
 				catch(Exception e)
@@ -471,7 +476,7 @@ public class DBproject{
 			//enter nationality of pilot 
 			do
 			{
-				System.out.println("Please enter the nationality of the Pilot: ");
+				System.out.print("Please enter the nationality of the Pilot: ");
 				try
 				{
 					nationality = in.readLine();
