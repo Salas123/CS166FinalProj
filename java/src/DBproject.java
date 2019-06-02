@@ -371,7 +371,7 @@ public class DBproject{
       try {
         dt = in.readLine();
         // check if the input date is correct
-        new SimpleDateFormat("yyyy/MM/dd").parse(dt);
+        new SimpleDateFormat("yyyy-mm-dd").parse(dt);
 
         break;
       }
