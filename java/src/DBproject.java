@@ -344,7 +344,10 @@ public class DBproject{
 
 		try
 		{
-			rowCount = stmt.executeQuery(query);
+			ResultSet rs = stmt.executeQuery(query);
+	        
+	        ResultSetMetaData rsmd = rs.getMetaData();
+	        rowCount = rsmd.getColumnCount();
 		}
 		catch(SQLException e)
 		{
