@@ -767,7 +767,7 @@ public class DBproject{
 			// *** Beginning of Flight info entries ***
 
 			int fiid;
-			String query2, fiidString, fi_fnum;
+			String query2, fiidString;
 			try
 			{
 				// generate random flight info id
@@ -791,17 +791,21 @@ public class DBproject{
 				Statement stmt3 = esql._connection.createStatement();
 				String fnumVal = "fnum";
 				String flightVal = "Flight";
-				fi_fnum = "";
-				boolean hasFlightID = false;
+				String fi_planeID = "";
+				String fi _pilotID = "";
+				String planeIDVal = "id";
+				String pilotIDVale = "id";
+				String planeVal = "Plane";
+				String pilotVal = "Pilot";
+				
 				
 				do
 				{
-					System.out.println("Please enter the flight number for flight info: ");
+					System.out.println("Please enter the pilot id for flight info: ");
 
 					try
 					{
-						fi_fnum = in.readLine();
-						hasFlightID = hasID(stmt3, flightVal , fnumVal, fi_fnum);
+						fi_pilotID = in.readLine();
 						break;
 					}
 					catch(Exception e)
@@ -810,11 +814,34 @@ public class DBproject{
 						continue;
 					}
 					
+				}
+				while(true);
+				
+				do
+				{
+					System.out.println("Please enter the plane id for flight info: ");
+
+					try
+					{
+						fi_planeID = in.readLine();
+						break;
+					}
+					catch(Exception e)
+					{
+						System.out.println("Your input is invalid!");
+						continue;
+					}
 					
 				}
-				while(hasFlightID == false);
-
-
+				while(true);
+				
+				if(hasID(stmt3, planeVal, planeIDVal, fi_planeID) && has(stmt3, pilotVal, pilotIDVal, fi_pilotID))
+				{
+					System.out.println("Both IDs exist");
+				}
+				else
+					System.out.println("One of the IDs exist");
+					
 			}
 			catch(SQLException e)
 			{
