@@ -837,7 +837,7 @@ public class DBproject{
 				if(hasID(stmt3, planeVal, planeIDVal, fi_planeID) && hasID(stmt3, pilotVal, pilotIDVal, fi_pilotID))
 				{
 					System.out.println("Both IDs exist");
-					query3 = "INSERT INTO FlightInfo(fiid, flight_id, plane_id, pilot_id) VALUES ( " + fiidString + " , " + flightNumString +" , " + fi_planeID + " , " + fi_pilotId + " );";
+					query3 = "INSERT INTO FlightInfo(fiid, flight_id, plane_id, pilot_id) VALUES ( " + fiidString + " , " + flightNumString +" , " + fi_planeID + " , " + fi_pilotID + ");";
 					esql.executeUpdate(query3);
 				}
 				else
