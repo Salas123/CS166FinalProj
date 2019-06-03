@@ -801,6 +801,7 @@ public class DBproject{
 					try
 					{
 						fi_fnum = in.readLine();
+						hasFlightID = hasID(stmt3, flightVal , fnumVal, fi_fnum);
 						break;
 					}
 					catch(Exception e)
@@ -809,7 +810,7 @@ public class DBproject{
 						continue;
 					}
 					
-					hasFlightID = hasID(stmt3, flightVal , fnumVal, fi_fnum);
+					
 				}
 				while(hasFlightID == false);
 
