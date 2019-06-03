@@ -791,6 +791,7 @@ public class DBproject{
 				Statement stmt3 = esql._connection.createStatement();
 				String fnumVal = "fnum";
 				String flightVal = "Flight";
+				fi_fnum = "";
 				
 				do
 				{
