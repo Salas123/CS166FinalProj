@@ -590,7 +590,16 @@ public class DBproject{
 	{
 		int flightNum, cost, numSold, numStops;
 		String query, departure_date, arrival_date, arrival_airport, departure_airport, flightNumString, costString, numSoldString, numStopsString;
-		
+		int fiid;
+			String query2, query3, fiidString;
+			String fnumVal = "fnum";
+			String flightVal = "Flight";
+			String fi_planeID = "";
+			String fi_pilotID = "";
+				String planeIDVal = "id";
+				String pilotIDVal = "id";
+				String planeVal = "Plane";
+				String pilotVal = "Pilot";
 		flightNum = 0;
 		cost = 0;
 		numSold = -1;
@@ -755,30 +764,10 @@ public class DBproject{
 
 			query = "INSERT INTO Flight (fnum, cost, num_sold, num_stops, actual_departure_date, actual_arrival_date, arrival_airport, departure_airport) VALUES (" + flightNumString + " , " + costString + " , " + numSoldString + " , " + numStopsString + " , '" + departure_date + "' , '" + arrival_date + "' , '" + arrival_airport + "' , '" + departure_airport + "' );";
 			esql.executeUpdate(query);
+			
+			
+			// *** Beginning of FlightInfo Entry ***
 
-			}
-
-			catch(SQLException e)
-			{
-	  			System.out.print("ERROR: " + e.getMessage());
-			}
-
-
-			// *** Beginning of Flight info entries ***
-
-			int fiid;
-			String query2, query3, fiidString;
-				String fnumVal = "fnum";
-				String flightVal = "Flight";
-				String fi_planeID = "";
-				String fi_pilotID = "";
-				String planeIDVal = "id";
-				String pilotIDVal = "id";
-				String planeVal = "Plane";
-				String pilotVal = "Pilot";
-				
-			try
-			{
 				Statement stmt3 = esql._connection.createStatement();
 				// generate random flight info id
 				query2 = "SELECT MAX(fiid) FROM FlightInfo;";
@@ -843,12 +832,14 @@ public class DBproject{
 				}
 				else
 					System.out.println("Cannot execute flight info update because one of the ids does not exist");
-					
+
 			}
+
 			catch(SQLException e)
 			{
-				System.out.print("Error: " + e.getMessage());
+	  			System.out.print("ERROR: " + e.getMessage());
 			}
+
 
 	}
 
