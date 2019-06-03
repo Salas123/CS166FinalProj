@@ -792,6 +792,7 @@ public class DBproject{
 				String fnumVal = "fnum";
 				String flightVal = "Flight";
 				fi_fnum = "";
+				boolean hasFlightID = false
 				
 				do
 				{
@@ -807,8 +808,10 @@ public class DBproject{
 						System.out.println("Your input is invalid!");
 						continue;
 					}
+					
+					hasFlightID = hasID(stmt3, flightVal , fnumVal, fi_fnum);
 				}
-				while((hasID(stmt3, flightVal , fnumVal, fi_fnum)) == false);
+				while(hasFlightID == false);
 
 
 			}
