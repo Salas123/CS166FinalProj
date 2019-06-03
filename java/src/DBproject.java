@@ -776,9 +776,10 @@ public class DBproject{
 				String pilotIDVal = "id";
 				String planeVal = "Plane";
 				String pilotVal = "Pilot";
-				Statement stmt3 = esql._connection.createStatement();
+				
 			try
 			{
+				Statement stmt3 = esql._connection.createStatement();
 				// generate random flight info id
 				query2 = "SELECT MAX(fiid) FROM FlightInfo;";
 
