@@ -792,7 +792,7 @@ public class DBproject{
 				String fnumVal = "fnum";
 				String flightVal = "Flight";
 				fi_fnum = "";
-				boolean hasFlightID = false
+				boolean hasFlightID = false;
 				
 				do
 				{
