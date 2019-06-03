@@ -792,7 +792,7 @@ public class DBproject{
 				String fnumVal = "fnum";
 				String flightVal = "Flight";
 				String fi_planeID = "";
-				String fi _pilotID = "";
+				String fi_pilotID = "";
 				String planeIDVal = "id";
 				String pilotIDVale = "id";
 				String planeVal = "Plane";
