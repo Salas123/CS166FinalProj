@@ -835,7 +835,7 @@ public class DBproject{
 				}
 				while(true);
 				
-				if(hasID(stmt3, planeVal, planeIDVal, fi_planeID) && has(stmt3, pilotVal, pilotIDVal, fi_pilotID))
+				if(hasID(stmt3, planeVal, planeIDVal, fi_planeID) && hasID(stmt3, pilotVal, pilotIDVal, fi_pilotID))
 				{
 					System.out.println("Both IDs exist");
 				}
