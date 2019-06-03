@@ -786,7 +786,12 @@ public class DBproject{
 	    			fiid = 0;
 
 				fiidString = Integer.toString(fiid);
+				
 
+				Statement stmt3 = esql._connection.createStatement();
+				String fnumVal = "fnum";
+				String flightVal = "Flight";
+				
 				do
 				{
 					System.out.println("Please enter the flight number for flight info: ");
@@ -802,17 +807,8 @@ public class DBproject{
 						continue;
 					}
 				}
-				while(true);
+				while((hasID(stmt3, flightVal , fnumVal, fi_fnum)) == false);
 
-				Statement stmt3 = esql._connection.createStatement();
-				String fnumVal = "fnum";
-				String flightVal = "Flight";
-
-
-				if (hasID(stmt3, flightVal , fnumVal, fi_fnum))
-				{
-						System.out.print("This flight exists!");
-				}
 
 			}
 			catch(SQLException e)
