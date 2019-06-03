@@ -767,7 +767,16 @@ public class DBproject{
 			// *** Beginning of Flight info entries ***
 
 			int fiid;
-			String query2, fiidString;
+			String query2, query3, fiidString;
+				String fnumVal = "fnum";
+				String flightVal = "Flight";
+				String fi_planeID = "";
+				String fi_pilotID = "";
+				String planeIDVal = "id";
+				String pilotIDVal = "id";
+				String planeVal = "Plane";
+				String pilotVal = "Pilot";
+				Statement stmt3 = esql._connection.createStatement();
 			try
 			{
 				// generate random flight info id
@@ -786,17 +795,6 @@ public class DBproject{
 	    			fiid = 0;
 
 				fiidString = Integer.toString(fiid);
-				
-
-				Statement stmt3 = esql._connection.createStatement();
-				String fnumVal = "fnum";
-				String flightVal = "Flight";
-				String fi_planeID = "";
-				String fi_pilotID = "";
-				String planeIDVal = "id";
-				String pilotIDVal = "id";
-				String planeVal = "Plane";
-				String pilotVal = "Pilot";
 				
 				
 				do
@@ -834,13 +832,16 @@ public class DBproject{
 					
 				}
 				while(true);
+			 
 				
 				if(hasID(stmt3, planeVal, planeIDVal, fi_planeID) && hasID(stmt3, pilotVal, pilotIDVal, fi_pilotID))
 				{
 					System.out.println("Both IDs exist");
+					query3 = "INSERT INTO FlightInfo(fiid, flight_id, plane_id, pilot_id) VALUES ( " + fiidString + " , " + flightNumString +" , " + fi_planeID + " , " + fi_pilotId + " );";
+					esql.executeUpdate(query3);
 				}
 				else
-					System.out.println("One of the IDs exist");
+					System.out.println("Cannot execute flight info update because one of the ids does not exist");
 					
 			}
 			catch(SQLException e)
